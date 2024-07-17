@@ -6,6 +6,7 @@ export default function TextForm(props) {
     console.log("up clicked!");
     let newText = text.toUpperCase();
     setText(newText);
+    props.showAlert("Converted to uppercase!", "success");
   };
 
   //fuction for lower case
@@ -13,23 +14,27 @@ export default function TextForm(props) {
     console.log("Lo clicked!");
     let newText = text.toLowerCase();
     setText(newText);
+    props.showAlert("Converted to lowercase!", "success");
   };
 
   //fuction for clear text
   const handleClearClick = () => {
     let newText = "";
     setText(newText);
+    props.showAlert("Text Cleared!", "success");
   };
 
   //fuction for copied to clipbord
   const handleCopy = () => {
     navigator.clipboard.writeText(text);
+    props.showAlert("Copied to Clipboard!", "success");
   };
 
   //fuction for removoe extra spaces
   const handleExtraSpaces = () => {
     let newText = text.split(/[ ]+/);
     setText(newText.join(" "));
+    props.showAlert("Extra spaces removed!", "success");
   };
 
   //handeling on changed events
@@ -38,18 +43,17 @@ export default function TextForm(props) {
     setText(event.target.value);
   };
 
-  const [text, setText] = useState("Enter text here");
+  const [text, setText] = useState("");
   return (
-    <div>
+    <div className="container" style={{color: props.mode === 'dark'?'white':'#041931'}}>
       <div className="mb-3">
         <h1>{props.heading} </h1>
-        <label htmlFor="myBox" className="form-label">
-          Example textarea
-        </label>
+        <label htmlFor="myBox" className="form-label"></label>
         <textarea
           className="form-control"
           value={text}
           onChange={handleOnChange}
+          style={{backgroundColor: props.mode === 'dark'?'gray':'white',color: props.mode === 'dark'?'white':'#041931'}}
           id="myBox"
           rows="8"
         ></textarea>
@@ -74,6 +78,13 @@ export default function TextForm(props) {
         >
           Remove Extra Spaces
         </button>
+      </div>
+      <div className="container my-3" style={{color: props.mode === 'dark'?'white':'#041931'}}>
+        <h1>Your text Summary</h1>
+        <p>{text.split(" ").length} Wrods and {text.length} Characters</p>
+        <p>{0.008 * text.split(" ").length} Minuts read</p>
+        <h2>Priview</h2>
+        <p>{text.length>0?text:"Enter somthing in the text box to preview it here"}</p>
       </div>
     </div>
   );
