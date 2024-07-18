@@ -63,22 +63,22 @@ export default function TextForm(props) {
           id="myBox"
           rows="8"
         ></textarea>
-        <button className="btn btn-primary my-2 mx-1" onClick={handleUpClick}>
+        <button disabled={text.length===0} className="btn btn-primary my-2 mx-1" onClick={handleUpClick}>
           convert to uppercase
         </button>
-        <button className="btn btn-primary my-2 mx-1" onClick={handleLoClick}>
+        <button disabled={text.length===0} className="btn btn-primary my-2 mx-1" onClick={handleLoClick}>
           convert to lowercase
         </button>
-        <button
+        <button disabled={text.length===0}
           className="btn btn-primary mx-1 my-2"
           onClick={handleClearClick}
         >
           Clear Text
         </button>
-        <button className="btn btn-primary mx-1 my-2" onClick={handleCopy}>
+        <button disabled={text.length===0} className="btn btn-primary mx-1 my-2" onClick={handleCopy}>
           Copy Text
         </button>
-        <button
+        <button disabled={text.length===0}
           className="btn btn-primary mx-1 my-2"
           onClick={handleExtraSpaces}
         >
@@ -92,7 +92,7 @@ export default function TextForm(props) {
         <h1>Your text Summary</h1>
         <p>
           {
-            text.split(" ").filter((element) => {
+            text.split(/\s+/).filter((element) => {
               return element.length !== 0;
             }).length
           }{" "}
@@ -109,7 +109,7 @@ export default function TextForm(props) {
         <p>
           {text.length > 0
             ? text
-            : "Enter somthing in the text box to preview it here"}
+            : "Nothing to preview"}
         </p>
       </div>
     </div>

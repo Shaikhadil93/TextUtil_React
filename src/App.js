@@ -35,7 +35,7 @@ function App() {
 
   return (
     <>
-    <Navbar title= "Textutils" mode={mode} togglemode={togglemode} />
+    <Navbar title="TextUtils" mode={mode} togglemode={togglemode} />
     <Alert alert = {alert}/>
     <Routes>
       <Route path="/" element={<TextForm showAlert={showAlert} heading = "Try TextUtils - word counter, character counter, remove extra spaces" mode={mode}/>}/>

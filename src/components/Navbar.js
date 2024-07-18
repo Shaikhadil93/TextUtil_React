@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
+
 export default function Navbar(props) {
   return (
     <>
@@ -26,7 +27,7 @@ export default function Navbar(props) {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/">
+                <Link className="nav-link" aria-current="page" to="/">
                   Home
                 </Link>
               </li>
